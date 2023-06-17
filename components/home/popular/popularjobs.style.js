@@ -5,8 +5,10 @@ import { FONT, SIZES, COLORS } from "../../../constants";
 const styles = StyleSheet.create({
   container: {
     marginTop: SIZES.xLarge,
+    
+    
   },
-  header: {
+  header: { 
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

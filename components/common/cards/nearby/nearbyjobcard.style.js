@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
     shadowColor: COLORS.white,
   },
   logoContainer: {
-    width: 50,
-    height: 50,
+    width: 70,
+    height: 70,
     backgroundColor: COLORS.white,
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center",
   },
-  logImage: {
+  logoImage: {
     width: "70%",
     height: "70%",
   },
