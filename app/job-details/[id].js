@@ -1,5 +1,5 @@
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Stack, useRouter, useSearchParams } from 'expo-router'
 
 
@@ -20,7 +20,11 @@ const JobDetails = () => {
 
     const [refreshing, setRefreching] =useState(false);
     const [activeTab, setActiveTab] = useState(tabs[0]);
-    const onRefresh =()=>{ }
+    const onRefresh =useCallback(() =>{ 
+                setRefreching(true);
+                refetch();
+                setRefreching(false);
+    }, [])
     const displayTabContent=() =>{
         switch(activeTab){
             case "Qualifications":
@@ -29,8 +33,14 @@ const JobDetails = () => {
                                 points={data[0].job_highlights?.Qualifications ?? ['N/A']}/>
             break;
             case "About":
+                return <JobAbout
+                    info={data[0].job_description?.Qualifications ?? "No data provided "}
+                />
             break;
             case "Responsabilities":
+                return <Specifics
+                                title="Responsabilities"
+                                points={data[0].job_highlights?.Responsabilities ?? ['N/A']}/>
             break;
             default:
             break;
@@ -98,6 +108,7 @@ const JobDetails = () => {
                     )
                     }
         </ScrollView>
+        <JobFooter url={data[0]?.job_google_link ?? 'https://careers.google.com/jobs/results'}/>
 
         </>
 
